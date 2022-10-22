@@ -1,0 +1,60 @@
+﻿@model Vidly.ViewModels.CustomerMovieViewModel
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row ">
+
+        <h1>Movies</h1>
+
+
+        @Html.ActionLink("Add Movie", "Create", "Movies", null)
+
+        @if (Model.Movies.Count == 0)
+        {
+            <p>No customer in the store</p>
+        }
+        else
+        {
+
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Movies
+                        </th>
+                        <th>Genres</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var movie in Model.Movies)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)
+                            </td>
+                            <td>
+                                @movie.Genre.Name
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", "Movies", new { id = movie.Id }, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+
+
+
+

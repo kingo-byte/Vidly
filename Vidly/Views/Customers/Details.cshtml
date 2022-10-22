@@ -1,0 +1,38 @@
+﻿@model Vidly.ViewModels.CustomerMovieViewModel
+
+
+@{
+    ViewBag.Title = "Details of a Customer";
+}
+
+<h2>Details</h2>
+
+<h3>@Html.DisplayFor(Model => Model.Customer.Name)</h3>
+
+
+
+
+<ul class="list-group">
+    <li class="list-group-item list-group-item-info ">MembershipType:  @Html.DisplayFor(Model => Model.Customer.MembershipType.Name)  </li>
+    <li class="list-group-item list-group-item-info">
+        BirthDate:
+        @if (Model.Customer.Birthdate.HasValue)
+        {
+            var customerBirthDate = Model.Customer.Birthdate.Value.ToShortDateString();
+            @Html.DisplayFor(Model => customerBirthDate)
+        }
+        else
+        {
+            <p>didn't add a birthdate</p>
+        }
+
+    </li>
+</ul>
+
+
+
+
+
+
+
+
